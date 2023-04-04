@@ -1,2 +1,7 @@
 # SmartEduProject
-Smartedu portal repository
+
+## Smartedu portal repository
+
+- Express
+- MongoDb
+- Token Auth

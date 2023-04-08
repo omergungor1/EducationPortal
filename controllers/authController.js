@@ -78,3 +78,12 @@ exports.getDashboardPage = async (req, res) => {
         user
     });
 }
+
+exports.deleteUser = async (req, res) => {
+    await User.findByIdAndDelete(req.params.id);
+    await Course.deleteMany({ user: req.params.id });
+
+    // const course = await Course.findOneAndRemove({ slug: req.params.slug });
+    req.flash('error', `User has been deleted successfully!`);
+    res.status(200).redirect('/users/dashboard');
+}

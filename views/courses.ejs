@@ -1,0 +1,152 @@
+<%- include('./partials/_header') %>
+
+	<%- include('./partials/_navigation') %>
+		<div class="all-title-box">
+			<div class="container text-center">
+				<h1>Courses<span class="m_1">Lorem Ipsum dolroin gravida nibh vel velit.</span></h1>
+			</div>
+		</div>
+
+		<div id="overviews" class="section wb">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-9 blog-post-single">
+						<!-- Flash Messages -->
+						<% if (flashMessages) { %>
+							<% if (flashMessages.success) { %>
+								<div class="alert alert-success">
+									<button type="button" class="close" data-dismiss="alert"
+										aria-hidden="true">&times;</button>
+									<strong>Success!</strong>
+									<%= flashMessages.success %>
+								</div>
+								<% } else if (flashMessages.error) { %>
+									<div class="alert alert-danger">
+										<button type="button" class="close" data-dismiss="alert"
+											aria-hidden="true">&times;</button>
+										<strong>Error!</strong>
+										<%= flashMessages.error %>
+									</div>
+									<% } %>
+										<% } %>
+											<!-- /Flash Messages -->
+											<div class="row">
+												<% for( let i=0; i < courses.length; i++ ) { %>
+													<div class="col-lg-6 col-md-6 col-12">
+														<div class="course-item mb-5">
+															<div class="image-blog">
+																<img src="/images/blog_1.jpg" alt="" class="img-fluid">
+															</div>
+															<div class="course-br">
+																<div class="course-title">
+																	<h2><a href="/courses/<%= courses[i].slug %>"
+																			title="">
+																			<%= courses[i].name %>
+																		</a></h2>
+																</div>
+																<div class="course-desc">
+																	<p>
+																		<%= courses[i].description.substring(0, 200) %>
+																	</p>
+																</div>
+															</div>
+															<div class="course-meta-bot">
+																<ul>
+																	<li><i class="fa fa-user" aria-hidden="true"></i>
+																		<%= courses[i].user.name %>
+																	</li>
+																</ul>
+															</div>
+														</div>
+													</div><!-- end col -->
+													<% } %>
+											</div><!-- end row -->
+
+					</div><!-- end col -->
+					<div class="col-lg-3 col-12 right-single">
+						<div class="widget-search">
+							<div class="site-search-area">
+								<form method="GET" id="site-searchform" action="/courses">
+									<div>
+										<input class="input-text form-control" name="search" id="search-k"
+											placeholder="Search..." type="text">
+										<button id="searchsubmit" value="Search" type="submit"></button>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="widget-categories">
+							<h3 class="widget-title">Categories</h3>
+							<ul>
+								<% for( let i=0; i < categories.length; i++ ) { %>
+									<li><a href="/courses?categories=<%= categories[i].slug %>">
+											<%= categories[i].name %>
+										</a></li>
+									<% } %>
+							</ul>
+						</div>
+					</div>
+				</div><!-- end row -->
+			</div><!-- end container -->
+		</div><!-- end section -->
+
+
+		<footer class="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4 col-md-4 col-xs-12">
+						<div class="widget clearfix">
+							<div class="widget-title">
+								<h3>About US</h3>
+							</div>
+							<p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus
+								faucibus
+								bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et
+								magnis
+								dis montes.</p>
+							<div class="footer-right">
+								<ul class="footer-links-soi">
+									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+									<li><a href="#"><i class="fa fa-github"></i></a></li>
+									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+									<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+									<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+								</ul><!-- end links -->
+							</div>
+						</div><!-- end clearfix -->
+					</div><!-- end col -->
+
+					<div class="col-lg-4 col-md-4 col-xs-12">
+						<div class="widget clearfix">
+							<div class="widget-title">
+								<h3>Information Link</h3>
+							</div>
+							<ul class="footer-links">
+								<li><a href="#">Home</a></li>
+								<li><a href="#">Blog</a></li>
+								<li><a href="#">Pricing</a></li>
+								<li><a href="#">About</a></li>
+								<li><a href="#">Contact</a></li>
+							</ul><!-- end links -->
+						</div><!-- end clearfix -->
+					</div><!-- end col -->
+
+					<div class="col-lg-4 col-md-4 col-xs-12">
+						<div class="widget clearfix">
+							<div class="widget-title">
+								<h3>Contact Details</h3>
+							</div>
+
+							<ul class="footer-links">
+								<li><a href="mailto:#">info@yoursite.com</a></li>
+								<li><a href="#">www.yoursite.com</a></li>
+								<li>PO Box 16122 Collins Street West Victoria 8007 Australia</li>
+								<li>+61 3 8376 6284</li>
+							</ul><!-- end links -->
+						</div><!-- end clearfix -->
+					</div><!-- end col -->
+
+				</div><!-- end row -->
+			</div><!-- end container -->
+
+			<%- include('./partials/_footer.ejs') %>

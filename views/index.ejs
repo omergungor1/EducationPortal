@@ -67,16 +67,18 @@
                 <div class="row align-items-center">
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                         <div class="message-box">
-                            <h4>#1 - SmartEDU latest courses</h4>
-                            <h2>
-                                <%= courses[0].name %>
-                            </h2>
-                            <p>
-                                <%= courses[0].description.substring(0,400)+'...' %>
-                            </p>
+                            <% if (courses[0]) { %>
+                                <h4>#1 - SmartEDU latest courses</h4>
+                                <h2>
+                                    <%= courses[0].name %>
+                                </h2>
+                                <p>
+                                    <%= courses[0].description.substring(0,400)+'...' %>
+                                </p>
 
-                            <a href="/courses/<%= courses[0].slug %>" class="hover-btn-new orange"><span>Learn
-                                    More</span></a>
+                                <a href="/courses/<%= courses[0].slug %>" class="hover-btn-new orange"><span>Learn
+                                        More</span></a>
+                                <% } %>
                         </div><!-- end messagebox -->
                     </div><!-- end col -->
 
@@ -95,16 +97,18 @@
 
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                         <div class="message-box">
-                            <h4>#2 - SmartEDU latest courses</h4>
-                            <h2>
-                                <%= courses[1].name %>
-                            </h2>
-                            <p>
-                                <%= courses[0].description.substring(0,400)+'...' %>
-                            </p>
+                            <% if (courses[1]) { %>
+                                <h4>#2 - SmartEDU latest courses</h4>
+                                <h2>
+                                    <%= courses[1].name %>
+                                </h2>
+                                <p>
+                                    <%= courses[0].description.substring(0,400)+'...' %>
+                                </p>
 
-                            <a href="/courses/<%= courses[1].slug %>" class="hover-btn-new orange"><span>Learn
-                                    More</span></a>
+                                <a href="/courses/<%= courses[1].slug %>" class="hover-btn-new orange"><span>Learn
+                                        More</span></a>
+                                <% } %>
                         </div><!-- end messagebox -->
                     </div><!-- end col -->
 
@@ -119,7 +123,7 @@
                         <span data-scroll class="global-radius icon_wrap effect-1 alignleft"><i
                                 class="flaticon-study"></i></span>
                         <p class="stat_count">
-                            <%= totalStudents %>
+                            <%= (totalStudents)?totalStudents:'0' %>
                         </p>
                         <h3>Students</h3>
                     </div><!-- end col -->
@@ -128,7 +132,7 @@
                         <span data-scroll class="global-radius icon_wrap effect-1 alignleft"><i
                                 class="flaticon-online"></i></span>
                         <p class="stat_count">
-                            <%= totalCourses %>
+                            <%= (totalCourses)?totalCourses:'0' %>
                         </p>
                         <h3>Courses</h3>
                     </div><!-- end col -->
@@ -137,7 +141,7 @@
                         <span data-scroll class="global-radius icon_wrap effect-1 alignleft"><i
                                 class="flaticon-years"></i></span>
                         <p class="stat_count">
-                            <%= totalTeachers %>
+                            <%= (totalTeachers)?totalTeachers:'0' %>
                         </p>
                         <h3>Teachers</h3>
                     </div><!-- end col -->

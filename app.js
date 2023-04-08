@@ -12,9 +12,11 @@ const userRoute = require('./routes/userRoute');
 const app = express();
 const port = process.env.PORT || 3000;
 
+const mongoUrl = 'mongodb+srv://omergungorco:WmizMHYsHksqVaai@cluster0.uwlbthb.mongodb.net/?retryWrites=true&w=majority'
+// const mongoUrl = 'mongodb://localhost:27017/smartedu-db'
 
 //Database Connection
-mongoose.connect('mongodb://localhost:27017/smartedu-db', {
+mongoose.connect(mongoUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     // useFindAndModify: false,
@@ -48,7 +50,7 @@ app.use(session({
     secret: 'my_keyboard_cat',
     resave: false,
     saveUninitialized: true,
-    store: mongoStore.create({ mongoUrl: 'mongodb://localhost:27017/smartedu-db' })
+    store: mongoStore.create({ mongoUrl: mongoUrl })
 }));
 app.use(flash());
 app.use((req, res, next) => {
